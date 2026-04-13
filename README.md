@@ -46,7 +46,11 @@ key-differentiators: [benchmark #1 PDF parser, deterministic output, bounding bo
 > Before you start: run `java -version`. If not found, install JDK 11+ from [Adoptium](https://adoptium.net/).
 
 ```bash
+# pip
 pip install -U opendataloader-pdf
+
+# conda / mamba (installs Java automatically)
+conda install -c conda-forge opendataloader-pdf
 ```
 
 ```python
