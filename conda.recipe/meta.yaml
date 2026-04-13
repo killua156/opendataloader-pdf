@@ -1,0 +1,53 @@
+{% set name = "opendataloader-pdf" %}
+{% set version = "0.1.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/opendataloader-project/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  # Run the following to get the sha256 after the release tag exists:
+  #   curl -sL https://github.com/opendataloader-project/opendataloader-pdf/archive/refs/tags/v0.1.0.tar.gz | sha256sum
+  sha256: PLACEHOLDER_FILL_IN_AFTER_TAGGING
+
+build:
+  noarch: python
+  number: 0
+
+requirements:
+  build:
+    - maven >=3.8
+    - openjdk >=11
+  host:
+    - python >=3.10
+    - pip
+    - hatchling >=1.0
+  run:
+    - python >=3.10
+    - openjdk >=11
+
+test:
+  imports:
+    - opendataloader_pdf
+  commands:
+    - pip check
+    - opendataloader-pdf --help
+  requires:
+    - pip
+
+about:
+  home: https://github.com/opendataloader-project/opendataloader-pdf
+  summary: High-performance PDF to Markdown/HTML/JSON converter — Python wrapper for the OpenDataLoader PDF Java CLI
+  description: |
+    OpenDataLoader PDF converts PDF files into structured formats (Markdown, HTML, JSON)
+    via a bundled Java CLI. The Python package wraps the CLI and provides both a
+    programmatic API and a command-line entry point. Java 11+ is required at runtime.
+  license: Apache-2.0
+  license_file: LICENSE
+  doc_url: https://opendataloader.org
+  dev_url: https://github.com/opendataloader-project/opendataloader-pdf
+
+extra:
+  recipe-maintainers:
+    - opendataloader-project
